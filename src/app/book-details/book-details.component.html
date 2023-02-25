@@ -1,0 +1,42 @@
+<div *ngIf="myBook; else loading">
+  <h1>{{ myBook.title }}</h1>
+  <h3 *ngIf="myBook.subtitle">{{ myBook.subtitle }}</h3>
+  <div class="ui divider"></div>
+  <div class="ui grid">
+    <div class="four wide column">
+      <h4>Authors</h4>
+      <ng-container *ngFor="let author of myBook.authors">
+        {{ author }}
+      </ng-container>
+    </div>
+    <div class="four wide column">
+      <h4>ISBN</h4>
+      {{ myBook.isbn }}
+    </div>
+    <div class="four wide column">
+      <h4>Published</h4>
+      {{ myBook.published }}
+    </div>
+    <div class="four wide column">
+      <i
+        class="yellow star icon"
+        *ngFor="let r of getRating(myBook.rating)"
+      ></i>
+    </div>
+  </div>
+  <h4>Description</h4>
+  <p>{{ myBook.description }}</p>
+  <div class="ui small images">
+    <img
+      *ngFor="let thumbnail of myBook.thumbnailslist"
+      [src]="thumbnail.url"
+    />
+  </div>
+  <button class="ui tiny red labeled icon button">
+    <i class="remove icon"></i> Delete book
+  </button>
+</div>
+
+<ng-template #loading>
+<div class="ui active centered centered inline loader"></div>
+</ng-template>

@@ -1,1 +1,20 @@
-<p>book-list-item works!</p>
+<img
+  class="ui tiny image"
+  *ngIf="
+    book.thumbnailslist && book.thumbnailslist[0] && book.thumbnailslist[0].url
+  "
+  [src]="book.thumbnailslist[0].url"
+/>
+
+<div class="content">
+  <div class="header">{{ book.title }}</div>
+  <div *ngIf="book.subtitle" class="description">{{ book.subtitle }}</div>
+  <div class="metadata">
+    <span *ngFor="let author of book.authors; last as l"
+      >{{ author }}
+      <span *ngIf="!l"> ,</span>
+    </span>
+    <br />
+    ISBN {{ book.isbn }}
+  </div>
+</div>

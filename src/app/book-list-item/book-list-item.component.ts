@@ -7,6 +7,9 @@ import { Book } from '../shared/book';
   styleUrls: ['./book-list-item.component.scss']
 })
 export class BookListItemComponent implements OnInit {
- @Input() book :Book;
- ngOnInit
+ @Input()
+  book!: Book;
+
+  ngOnInit(){}
+ 
 }

@@ -1,22 +1,15 @@
-<div class="ui middle aligned selection  divided list">
-  <a *ngFor="let book of myBooks" class="item">
-    <img
-      class="ui tiny image"
-      *ngIf="book.thumbnailslist && book.thumbnailslist[0] && book.thumbnailslist[0].url"
-      [src]="book.thumbnailslist[0].url"
-    />
-    
-    <div class="content">
-      <div class="header">{{ book.title }}</div>
-      <div *ngIf="book.subtitle" class="description">{{ book.subtitle }}</div>
-      <div class="metadata">
-        <span *ngFor="let author of book.authors; last as l"
-          >{{ author }}
-          <span *ngIf="!l"> ,</span>
-        </span>
-        <br />
-        ISBN {{ book.isbn }}
-      </div>
-    </div>
-  </a>
+<div class="ui middle aligned selection divided list">
+  <bm-book-list-item
+    class="item"
+    *ngFor="let b of myBooks"
+    [book]="b"
+    [routerLink]="b.isbn"
+  >
+  </bm-book-list-item>
+
+
+  <div *ngIf="!myBooks" class="ui active dimmer">
+    <div class="ui large text loader">Loading...</div>
+  </div>
+  <p *ngIf="myBooks && !myBooks.length">so far no books</p>
 </div>
