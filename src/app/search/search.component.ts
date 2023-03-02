@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { debounceTime, filter, Subject } from 'rxjs';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  Subject,
+  switchMap,
+  tap,
+} from 'rxjs';
+import { Book } from '../shared/book';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'bm-search',
@@ -8,12 +18,20 @@ import { debounceTime, filter, Subject } from 'rxjs';
 })
 export class SearchComponent implements OnInit {
   keyUp$ = new Subject<string | null>();
-  ngOnInit(){
+  foundBooks: Book[] = [];
+  isLoading = false;
+  constructor(private bs: BookStoreService) {}
+  ngOnInit() {
     this.keyUp$
       .pipe(
-        filter((term) =>  term ?  term.length>= 3 : false) ,
-        debounceTime(500)
+        filter((term) => (term ? term.length >= 3 : false)),
+        debounceTime(500),
+        distinctUntilChanged(),
+        tap(() => (this.isLoading = true)),
+        switchMap((searchTerm) => this.bs.getAllSearch(searchTerm)),
+        tap(() => (this.isLoading = false)),
+        
       )
-      .subscribe((e) => console.log(e));
+      .subscribe((books) => (this.foundBooks = books));
   }
 }

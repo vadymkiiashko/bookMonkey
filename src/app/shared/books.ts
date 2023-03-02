@@ -9,7 +9,7 @@ export const books: Book[] = [
     subtitle:
       'Grundlagen, fortgeschrittene Themen und Best Practices mit NativeScript und NgRx',
     rating: 5,
-    thumbnailslist: [
+    thumbnails: [
       {
         url: 'https://ng-buch.de/buch1.jpg',
         title: 'Buchcover',
@@ -26,7 +26,7 @@ export const books: Book[] = [
     subtitle:
       'Grundlagen, fortgeschrittene Themen und Best Practices mit NativeScript und NgRx',
     rating: 5,
-    thumbnailslist: [
+    thumbnails: [
       {
         url: 'https://ng-buch.de/buch1.jpg',
         title: 'Buchcover',
@@ -43,7 +43,7 @@ export const books: Book[] = [
     subtitle:
       'Grundlagen, fortgeschrittene Themen und Best Practices mit NativeScript und NgRx',
     rating: 5,
-    thumbnailslist: [
+    thumbnails: [
       {
         url: 'https://ng-buch.de/buch1.jpg',
         title: 'Buchcover',
@@ -60,7 +60,7 @@ export const books: Book[] = [
     subtitle:
       'Grundlagen, fortgeschrittene Themen und Best Practices mit NativeScript und NgRx',
     rating: 5,
-    thumbnailslist: [
+    thumbnails: [
       {
         url: 'https://ng-buch.de/buch1.jpg',
         title: 'Buchcover',

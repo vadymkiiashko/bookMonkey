@@ -1,9 +1,7 @@
 <img
   class="ui tiny image"
-  *ngIf="
-    book.thumbnailslist && book.thumbnailslist[0] && book.thumbnailslist[0].url
-  "
-  [src]="book.thumbnailslist[0].url"
+  *ngIf="book.thumbnails && book.thumbnails[0] && book.thumbnails[0].url"
+  [src]="book.thumbnails[0].url"
 />
 
 <div class="content">
